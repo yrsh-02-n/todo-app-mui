@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react'
+
+import CssBaseline from '@mui/material/CssBaseline'
+import { ThemeProvider } from '@mui/material/styles'
+import theme from './components/theme/theme'
+import darkTheme from './components/theme/darkTheme'
+
+import DarkModeIcon from '@mui/icons-material/DarkMode'
+import Switch from '@mui/material/Switch'
+import './App.css'
+import TaskForm from './components/TaskForm/TaskForm'
+import TaskList from './components/TaskList/TaskList'
+
 
 function App() {
+  const [isDarkMode, setIsDarkMode] = useState(false)
+  const currentTheme = isDarkMode ? darkTheme : theme
+
+  const handleToggleTheme = () => {
+    setIsDarkMode(!isDarkMode)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ThemeProvider theme={currentTheme}>
+      <CssBaseline />
+      <div className="themeSwitcher">
+        <DarkModeIcon color="primary" />
+        <Switch onClick={handleToggleTheme}/>
+      </div>
+      <div className="App">
+        <h1>Todo App MUI </h1>
+        <TaskForm />
+        <TaskList ClassName="taskList" />
+      </div>
+    </ThemeProvider>
+  )
 }
 
-export default App;
+export default App
