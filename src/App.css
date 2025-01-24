@@ -3,26 +3,4 @@
   padding: 20px;
   max-width: 600px;
   text-align: center;
-
-  position: relative;
 }
-
-h1 {
-  margin-bottom: 2rem;
-  line-height: 1.2;
-}
-
-.themeSwitcher {
-  display: flex;
-  align-items: center;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-
-.taskForm {
-  height: 50px;
-  margin-bottom: 1rem;
-}
-
-

@@ -20,6 +20,15 @@ const darkTheme = createTheme({
       main: '#48d64f',
     },
   },
+  typography: {
+    h1: {
+      fontSize: '3rem',
+      fontWeight: 'bold',
+      color: '#58C4DC',
+      textAlign: 'center',
+      marginBottom: '40px',
+    },
+  },
 })
 
 export default darkTheme

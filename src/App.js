@@ -1,38 +1,88 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
-import CssBaseline from '@mui/material/CssBaseline'
 import { ThemeProvider } from '@mui/material/styles'
-import theme from './components/theme/theme'
+import CssBaseline from '@mui/material/CssBaseline'
+import lightTheme from './components/theme/lightTheme'
 import darkTheme from './components/theme/darkTheme'
-
+import Typography from '@mui/material/Typography'
+import { TasksProvider } from './context/TasksContext'
 import DarkModeIcon from '@mui/icons-material/DarkMode'
 import Switch from '@mui/material/Switch'
+import { Box } from '@mui/material'
+
 import './App.css'
 import TaskForm from './components/TaskForm/TaskForm'
 import TaskList from './components/TaskList/TaskList'
 
-
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(false)
-  const currentTheme = isDarkMode ? darkTheme : theme
+  const [theme, setTheme] = useState(false)
+  const [switchChecked, setSwitchChecked] = useState(false)
+  const currentTheme = theme ? lightTheme : darkTheme
 
   const handleToggleTheme = () => {
-    setIsDarkMode(!isDarkMode)
+    setTheme(!theme)
+    setSwitchChecked(!switchChecked)
   }
 
+  // localStorage
+  // theme
+  useEffect(() => {
+    const storedTheme = localStorage.getItem('theme')
+    if (storedTheme) {
+      setTheme(JSON.parse(storedTheme))
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('theme', JSON.stringify(theme))
+  }, [theme])
+
+  // switch
+  useEffect(() => {
+    const storedSwitch = localStorage.getItem('themeSwitcher')
+    if (storedSwitch) {
+      setSwitchChecked(JSON.parse(storedSwitch))
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('themeSwitcher', JSON.stringify(switchChecked))
+  }, [switchChecked])
+
+  console.log(Switch)
+
   return (
-    <ThemeProvider theme={currentTheme}>
-      <CssBaseline />
-      <div className="themeSwitcher">
-        <DarkModeIcon color="primary" />
-        <Switch onClick={handleToggleTheme}/>
-      </div>
-      <div className="App">
-        <h1>Todo App MUI </h1>
-        <TaskForm />
-        <TaskList ClassName="taskList" />
-      </div>
-    </ThemeProvider>
+    <TasksProvider>
+      <ThemeProvider theme={currentTheme}>
+        <CssBaseline />
+        <Box>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              position: 'absolute',
+              right: 0,
+              top: 0,
+            }}
+          >
+            <DarkModeIcon color="primary" />
+            <Switch onClick={handleToggleTheme} checked={switchChecked} />
+          </Box>
+        </Box>
+        <Box
+          sx={{
+            margin: '0 auto',
+            padding: '20px',
+            maxWidth: '600px',
+            textAlign: 'center',
+          }}
+        >
+          <Typography variant="h1">Todo App MUI </Typography>
+          <TaskForm />
+          <TaskList ClassName="taskList" />
+        </Box>
+      </ThemeProvider>
+    </TasksProvider>
   )
 }
 

@@ -1,6 +1,6 @@
 import { createTheme } from '@mui/material/styles'
 
-const theme = createTheme({
+const lightTheme = createTheme({
   palette: {
     mode: 'light',
     primary: {
@@ -23,6 +23,15 @@ const theme = createTheme({
       primary: '#1976d2',
     },
   },
+  typography: {
+    h1: {
+      fontSize: '3rem',
+      fontWeight: 'bold',
+      color: '#1976d2',
+      textAlign: 'center',
+      marginBottom: '40px'
+    },
+  },
 })
 
-export default theme
+export default lightTheme
