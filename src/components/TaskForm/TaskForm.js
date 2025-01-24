@@ -1,8 +1,11 @@
-import { useTheme } from '@mui/material/styles'
-import { v4 as uuidv4 } from 'uuid'
 import { useState, useContext } from 'react'
-import { TasksContext } from '../../context/TasksContext'
+
 import { Box, Button, OutlinedInput } from '@mui/material'
+import { useTheme } from '@mui/material/styles'
+
+import { v4 as uuidv4 } from 'uuid'
+
+import { TasksContext } from '../../context/TasksContext'
 
 const TaskForm = () => {
   const theme = useTheme()
@@ -48,7 +51,7 @@ const TaskForm = () => {
         variant="contained"
         sx={{ maxHeight: '56px', borderRadius: '0px 4px 4px 0px' }}
       >
-        Submit
+        Add
       </Button>
     </Box>
   )

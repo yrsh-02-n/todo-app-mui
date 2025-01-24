@@ -8,6 +8,10 @@ export const TasksProvider = ({ children }) => {
     setTasks((tasks) => [...tasks, task])
   }
 
+  const clearTasksList = () => {
+    setTasks([])
+  }
+
   // localStorage
    useEffect(() => {
      const storedTasks = localStorage.getItem('tasks')
@@ -22,7 +26,9 @@ export const TasksProvider = ({ children }) => {
 
    
   return (
-    <TasksContext.Provider value={{ tasks, addTask }}>
+    <TasksContext.Provider
+      value={{ tasks, addTask, clearTasksList }}
+    >
       {children}
     </TasksContext.Provider>
   )

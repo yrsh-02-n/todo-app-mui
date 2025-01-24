@@ -1,3 +1,5 @@
+import { useContext } from 'react'
+
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import Checkbox from '@mui/material/Checkbox'
@@ -5,7 +7,6 @@ import ListItemText from '@mui/material/ListItemText'
 import Box from '@mui/material/Box'
 
 import { TasksContext } from '../../context/TasksContext'
-import { useContext } from 'react'
 
 const TaskList = () => {
   const { tasks } = useContext(TasksContext)

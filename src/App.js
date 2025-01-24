@@ -5,14 +5,14 @@ import CssBaseline from '@mui/material/CssBaseline'
 import lightTheme from './components/theme/lightTheme'
 import darkTheme from './components/theme/darkTheme'
 import Typography from '@mui/material/Typography'
-import { TasksProvider } from './context/TasksContext'
 import DarkModeIcon from '@mui/icons-material/DarkMode'
 import Switch from '@mui/material/Switch'
 import { Box } from '@mui/material'
 
-import './App.css'
+import { TasksProvider } from './context/TasksContext'
 import TaskForm from './components/TaskForm/TaskForm'
 import TaskList from './components/TaskList/TaskList'
+import TaskControls from './components/TasksControls/TaskControls'
 
 function App() {
   const [theme, setTheme] = useState(false)
@@ -66,7 +66,7 @@ function App() {
             }}
           >
             <DarkModeIcon color="primary" />
-            <Switch onClick={handleToggleTheme} checked={switchChecked} />
+            <Switch onClick={handleToggleTheme} checked={!switchChecked} />
           </Box>
         </Box>
         <Box
@@ -79,7 +79,8 @@ function App() {
         >
           <Typography variant="h1">Todo App MUI </Typography>
           <TaskForm />
-          <TaskList ClassName="taskList" />
+          <TaskList />
+          <TaskControls />
         </Box>
       </ThemeProvider>
     </TasksProvider>
