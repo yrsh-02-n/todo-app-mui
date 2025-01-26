@@ -12,22 +12,46 @@ export const TasksProvider = ({ children }) => {
     setTasks([])
   }
 
+  const deleteTask = (id) => {
+    setTasks(tasks.filter((task) => task.id !== id))
+  }
+
+  const toggleTaskStatus = (id) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id
+          ? { ...task, isCompleted: !task.isCompleted }
+          : { ...task }
+      )
+    )
+  }
+
+  const deleteCompletedTasks = () => {
+    setTasks(tasks.filter((task) => !task.isCompleted))
+  }
+
   // localStorage
-   useEffect(() => {
-     const storedTasks = localStorage.getItem('tasks')
-     if (storedTasks) {
-       setTasks(JSON.parse(storedTasks))
-     }
-   }, [])
+  useEffect(() => {
+    const storedTasks = localStorage.getItem('tasks')
+    if (storedTasks) {
+      setTasks(JSON.parse(storedTasks))
+    }
+  }, [])
 
-   useEffect(() => {
-     localStorage.setItem('tasks', JSON.stringify(tasks))
-   }, [tasks])
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks))
+  }, [tasks])
 
-   
   return (
     <TasksContext.Provider
-      value={{ tasks, addTask, clearTasksList }}
+      value={{
+        tasks,
+        addTask,
+        clearTasksList,
+        deleteTask,
+        toggleTaskStatus,
+        deleteCompletedTasks,
+      }}
     >
       {children}
     </TasksContext.Provider>

@@ -49,8 +49,6 @@ function App() {
     localStorage.setItem('themeSwitcher', JSON.stringify(switchChecked))
   }, [switchChecked])
 
-  console.log(Switch)
-
   return (
     <TasksProvider>
       <ThemeProvider theme={currentTheme}>
@@ -75,6 +73,9 @@ function App() {
             padding: '20px',
             maxWidth: '600px',
             textAlign: 'center',
+            '@media (max-width:530px)': {
+              marginTop: '30px'
+            },
           }}
         >
           <Typography variant="h1">Todo App MUI </Typography>
