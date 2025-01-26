@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/todo-app-mui/static/css/main.22cebf1b.css",
+    "main.js": "/todo-app-mui/static/js/main.62436166.js",
+    "index.html": "/todo-app-mui/index.html",
+    "main.22cebf1b.css.map": "/todo-app-mui/static/css/main.22cebf1b.css.map",
+    "main.62436166.js.map": "/todo-app-mui/static/js/main.62436166.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.22cebf1b.css",
+    "static/js/main.62436166.js"
+  ]
+}
