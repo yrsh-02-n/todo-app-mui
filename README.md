@@ -3,7 +3,7 @@
 This is my second application written in React.
 The goal of creating this application was to practice using a UI library and the Context API.
 
-[The app is available at ]([https://username.github.io/repository-name](https://yrsh-02-n.github.io/todo-app-mui/))
+You can view the app [here](https://username.github.io/repository-name](https://yrsh-02-n.github.io/todo-app-mui/)
 
 # Features
 
